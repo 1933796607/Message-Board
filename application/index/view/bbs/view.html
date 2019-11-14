@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+
+    <title>Tp5简易留言板</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2><a href="../../show">Tp5简易留言板</a></h2>
+        <!-- <p>留言标题：</p>
+        {$list.0.title}
+        <p>留言时间：</p>
+        {$list.0.create_time|date="y-m-d h:i",###}
+        <p>留言内容:</p>
+        {$list.0.content}
+        <br> -->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">留言标题：{$list.0.title}</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    留言内容：<br><hr>
+                    {$list.0.content}
+                </p>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">留言时间：</li>
+                <li class="list-group-item">{$list.0.create_time|date="y-m-d h:i",###}</li>
+            </ul>
+
+        </div>
+        <!-- 分页 -->
+        <nav aria-label="...">
+            <ul class="pager">
+                <!-- 上一页 -->
+                {if condition="$up neq ''" }
+                <li class="previous">
+                    <a href="{$up}">
+                        <span aria-hidden="true">&larr;</span>
+                         上一页
+                    </a>
+                </li>
+                    {else /}
+                <li class="previous disabled">
+                        <span aria-hidden="true">&larr;没有了
+                        </span> 
+                </li>
+                {/if}
+                <!-- 下一页 -->
+                {if condition="$next neq ''" }
+                <li class="next">
+                    <a href="{$next}">
+                        下一页
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+                {else /}
+                <li class="next disabled">
+                    <span aria-hidden="true">没有了&rarr;
+                    </span>
+                </li>
+                {/if}
+            </ul>
+        </nav>
+        <!-- {if condition="$up neq ''" }
+            <a href="{$Think.server.script_name}index/bbs/view/id/{$up}">上一页</a>
+            {else /}上一页没有了
+        {/if}
+        {if condition="$next neq ''" }
+            <a href="{$Think.server.script_name}index/bbs/view/id/{$next}">下一页</a>
+            {else /}下一页没有了
+        {/if} -->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">手机扫码访问当前留言</h3>
+            </div>
+            <div class="panel-body">
+                <img src="http://pan.baidu.com/share/qrcode?w=150&h=150&url={$Request.root.true}/{$Request.path}" />
+            </div>
+        </div>
+    </div>
+    <footer class="bs-docs-footer " style="
+        padding-top: 50px;
+        padding-bottom: 50px;
+        margin-top: 100px;
+        margin-bottom: 0px;
+        color: #99979c;
+        text-align: center;
+        background-color: #2a2730">
+        <div class="container">
+
+            <p> ThinkPhp 5 简易留言板 @Rinuo.com QQ：1933796607 V1.0版 2019-10-30
+            </p>
+
+
+        </div>
+    </footer>
+</body>
+
+</html>
